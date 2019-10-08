@@ -69,32 +69,49 @@ public static void main(String[] args) {
         int pivot;
         int pivot_index;
         int next_hi;
-
+            //System.out.println(lo + " lo" );
+            // System.out.println(hi + " hi" );
         if(lo >= hi)
-        {
-            return;
+        {     // System.out.println("return");
+            return ;
         }
         pivot = list[lo];
         pivot_index = lo;
-        swap(list, list[pivot_index],list[lo]);
-        pivot = list[lo];
+        swap(list, pivot_index,lo);
+        //System.out.println("test");
         pivot_index = lo;
+        pivot = list[lo];
+            //  System.out.println(Arrays.toString(list ) );
+                // System.out.println(pivot_index);
         next_hi = hi;
+        //System.out.println(next_hi);
+
         while(pivot_index < next_hi)
         {
                 if(list[pivot_index+1] <= list[pivot_index])
                 {
-                    swap(list,list[pivot_index+1] , list[pivot_index]);
+                    swap(list,pivot_index+1 , pivot_index);
                     pivot_index++;
+                     //System.out.println(Arrays.toString(list ) );
+                       //   System.out.println(pivot_index);
+                                //  System.out.println("boom 1");
+
                 }
                 else
                 {
-                    swap(list,list[pivot_index+1] , list[next_hi]);
+
+                    swap(list,pivot_index+1 , next_hi);
                     next_hi--;
+                     //System.out.println(Arrays.toString(list ) );
+                                       // System.out.println(next_hi);
+                                         //    System.out.println("boom2");
                 }
 
         }
-        quick_sort_work(list, lo, pivot_index+1);
+        //System.out.println("exit loop");
+
+        quick_sort_work(list, lo, pivot_index-1);
+           // System.out.println("second");
         quick_sort_work(list, next_hi+1, hi);
 
 
@@ -102,7 +119,8 @@ public static void main(String[] args) {
 
     private static void swap(int list[],int i, int j)
     {
-        int temp;
+        int temp = 0;
+               // System.out.println(i +" "+j);
         temp = list[j];
         list[j] = list[i];
         list[i] = temp;
@@ -114,22 +132,22 @@ public static void main(String[] args) {
     {
         //testing array currently modded for the 3sum
         int[] intArray = new int[]{ 1,2,3,-3,4,6,5,7,-5,8,10,9};
-        //int[] testArray1 = new int []{ 11,99,22,33,66,77,44,88,55,0};
-        //int[] testArray2 = new int []{ 11,99,22,33,66,77,44,88,55,0};
-        //int[] testArray3 = new int []{ 11,99,22,33,66,77,44,88,55,0};
+        int[] testArray1 = new int []{ 11,99,22,33,66,77,44,88,55,0};
+        int[] testArray2 = new int []{ 11,99,22,33,66,77,44,88,55,0};
+        int[] testArray3 = new int []{ 11,99,22,33,66,77,44,88,55,0};
 
 
         long sum = 0;
         long cnt;
         //cnt = count (sum, intArray  );
-        //bubble_sort(intArray) ;
-       //      System.out.println(Arrays.toString( intArray) );
+        bubble_sort(testArray1) ;
+            System.out.println(Arrays.toString( (testArray1)) );
 
-        insertion_sort(intArray);
-          System.out.println(Arrays.toString(intArray ) );
+        insertion_sort(testArray2);
+          System.out.println(Arrays.toString(testArray2 ) );
 
-       // quick_sort(intArray);
-          //   System.out.println(Arrays.toString(intArray ) );
+       quick_sort(testArray3);
+            System.out.println(Arrays.toString(testArray3 ) );
 
 
         System.out.println("Found   amount ");
