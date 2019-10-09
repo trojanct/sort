@@ -72,8 +72,9 @@ public class sort
     }
     public static void merge_sort_work(int[] list, int lo, int hi )
     {
-        int mid = 0;
-        if ( lo < hi) {
+        int mid;
+        if ( lo < hi)
+        {
 
             mid = (lo + hi) / 2;
 
@@ -92,10 +93,11 @@ public class sort
         int length_b = hi - mid;
         int iA = 0;
         int iB = 0;
-        int iM = 0;
+        int iM = lo;
 
         int low_list[] = new int [length_a];
         int hi_list[] = new int [length_b];
+
 
         for(int i = 0; i < length_a; i++)
         {
@@ -105,16 +107,40 @@ public class sort
         {
             hi_list[j] = list[mid + 1 + j];
         }
-        while(iA < length_a && iB < length_b) {
-            if (low_list[iA] < hi_list[iB]) {
+
+        System.out.println(Arrays.toString(list ) );
+
+        while(iA < length_a && iB < length_b)
+        {
+            if (low_list[iA] <= hi_list[iB] )
+            {
                 list[iM] = low_list[iA];
                 iA++;
 
-            } else {
-                list[iM] = low_list[iB];
+            }
+            else
+            {
+                list[iM] = hi_list[iB];
                 iB++;
             }
             iM++;
+
+
+        }
+        while(iA < length_a)
+        {
+            list[iM] = low_list[iA];
+            iA++;
+            iM++;
+
+
+        }
+        while(iB < length_b)
+        {
+            list[iM] = hi_list[iB];
+            iB++;
+            iM++;
+
 
         }
 
